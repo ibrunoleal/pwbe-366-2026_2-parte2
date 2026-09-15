@@ -1,0 +1,50 @@
+/* 1. The Container: This turns on the grid and makes 12 equal tracks */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 16px;
+    /* Spacing between your items */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    background-color: #f0f0f0;
+    color: #004d20;
+    font-family: sans-serif;
+    padding: 16px;
+    /* border-radius: 8px; */
+}
+
+/* 2. The Row Helper: Forces items to start cleanly on a new row line */
+.grid-row {
+    grid-column: 1 / -1;
+    /* Stretches from the very first to the very last line */
+    display: grid;
+    grid-template-columns: subgrid;
+    /* Inherits the 12 columns from the parent */
+}
+
+/* 3. The Column Span Classes */
+.col-2 {
+    grid-column: span 2;
+}
+
+.col-3 {
+    grid-column: span 3;
+}
+
+.col-4 {
+    grid-column: span 4;
+}
+
+.col-6 {
+    grid-column: span 6;
+}
+
+.col-9 {
+    grid-column: span 9;
+}
+
+.col-12 {
+    grid-column: span 12;
+}

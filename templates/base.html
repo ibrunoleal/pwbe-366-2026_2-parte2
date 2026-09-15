@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - MySUAP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/grid12.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="grid-row">
+            <div class="col-12">
+                {% include "partials/_navbar.html" %}
+            </div>
+        </div>
+        <div class="grid-row">
+            <div class="col-12">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+        <div class="grid-row">
+            <div class="col-12">
+                {% include "partials/_footer.html" %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

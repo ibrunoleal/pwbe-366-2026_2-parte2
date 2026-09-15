@@ -1,0 +1,7 @@
+.texto-centralizado {
+    text-align: center;
+    width: 100%;
+    /* Garante que ele ocupe toda a largura disponível para alinhar no meio */
+    margin-bottom: 16px;
+    /* Adiciona um espaço saudável abaixo do título */
+}
