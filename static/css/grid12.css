@@ -4,8 +4,8 @@
     grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: 16px;
     /* Spacing between your items */
-    width: 100%;
-    max-width: 1200px;
+    width: 90%;
+    /* max-width: 1200px; */
     margin: 0 auto;
 
     background-color: #f0f0f0;

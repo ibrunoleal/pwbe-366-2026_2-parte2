@@ -19,11 +19,9 @@
                 {% include "partials/_navbar.html" %}
             </div>
         </div>
-        <div class="grid-row">
-            <div class="col-12">
-                {% block content %}{% endblock %}
-            </div>
-        </div>
+    </div>
+    {% block content %}{% endblock %}
+    <div class="grid-container">
         <div class="grid-row">
             <div class="col-12">
                 {% include "partials/_footer.html" %}

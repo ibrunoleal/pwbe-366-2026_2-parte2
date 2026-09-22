@@ -5,3 +5,7 @@
     margin-bottom: 16px;
     /* Adiciona um espaço saudável abaixo do título */
 }
+
+.borda {
+    border: 1px solid red;
+}

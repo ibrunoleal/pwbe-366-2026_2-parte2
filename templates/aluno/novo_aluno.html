@@ -8,14 +8,16 @@
 
 {% block content %}
 <div>
-    <div class="texto-centralizado">
-        <h1>Cadastro de novo aluno</h1>
-    </div>
     <div class="grid-container">
+        <div class="grid-row texto-centralizado">
+            <div class="col-12">
+                <h2>Cadastro de novo aluno</h2>
+            </div>
+        </div>
         <div class="grid-row">
             <div class="col-3"></div>
             <div class="col-6">
-                <form action="" method="post">
+                <form action="/aluno/salvar" method="POST">
                     <div>
                         <label for="">Matricula:</label>
                         <input type="text" name="matricula" id="">
