@@ -1,7 +1,35 @@
+from daos.aluno_dao import AlunoDAO
+
 class Aluno:
     def __init__(self, matricula: str, nome: str):
         self.matricula = matricula
         self.nome = nome
+
+    def save(self):
+        """
+        Salva o aluno no banco de dados.
+        Retorna True se o aluno foi salvo com sucesso, False caso contrário.
+        """
+        dao = AlunoDAO()
+        resultado = dao.create(self)
+        if resultado == 1:
+            print(f"Aluno {self.nome} com matrícula {self.matricula} salvo com sucesso.")
+            return True
+        else:
+            print(f"Falha ao salvar o aluno {self.nome} com matrícula {self.matricula}.")
+            return False
+
+    def get_all():
+        """
+        Retorna todos os alunos do banco de dados.
+        Retorna uma lista de objetos Aluno. Se não houver alunos, retorna uma lista vazia e None se ocorrer um erro.
+        """
+        dao = AlunoDAO()
+        resultado = dao.read_all()
+        if resultado is None:
+            print("Falha ao consultar os alunos.")
+            return None
+        return resultado
 
     @property
     def matricula(self) -> str:
