@@ -20,11 +20,19 @@
                     <tr>
                         <th>matricula</th>
                         <th>nome</th>
+                        <th></th>
                     </tr>
                     {% for aluno in context.alunos %}
                     <tr>
                         <td>{{ aluno.matricula }}</td>
                         <td>{{ aluno.nome }}</td>
+                        <td class="celula-acao">
+                            <!-- utilizando a chamada de rota via endpoin ao invés de usar a rota direta -->
+                            <form class="form-detalhar" action="{{ url_for('aluno_buscar') }}" method="POST">
+                                <input type="hidden" name="matricula" value="{{ aluno.matricula }}">
+                                <button class="botao-detalhar" type="submit">Detalhar</button>
+                            </form>
+                        </td>
                     </tr>
                     {% endfor %}
                 </table>

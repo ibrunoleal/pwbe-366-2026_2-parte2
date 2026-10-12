@@ -25,3 +25,30 @@ th {
     background-color: #04AA6D;
     color: white;
 }
+
+.celula-acao {
+    text-align: center;
+}
+
+.form-detalhar {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+.botao-detalhar {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 4px;
+    border: 0;
+    background-color: #04AA6D;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+}
+
+.botao-detalhar:hover {
+    background-color: #038f5b;
+}

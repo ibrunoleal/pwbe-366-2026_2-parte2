@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} Novo Aluno {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="grid-container">
+    <div class="grid-row texto-centralizado">
+        <div class="col-12">
+            <h2>Erros no Cadastro de novo aluno</h2>
+        </div>
+        {% for erro in context.erros %}
+        <div class="col-12"> {{ erro }} </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

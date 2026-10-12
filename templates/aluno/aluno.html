@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} Relação de Alunos {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/lista.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="grid-container">
+    <div class="grid-row texto-centralizado">
+        <div class="col-12">
+            <h2>Cadastro do Aluno</h2>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div>
+                <ul class="lista-dados">
+                    <li>
+                        <span class="lista-descricao">Matrícula</span>
+                        <span class="lista-valor">{{ context.aluno.matricula }}</span>
+                    </li>
+                    <li>
+                        <span class="lista-descricao">Nome</span>
+                        <span class="lista-valor">{{ context.aluno.nome }}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="painel-acoes">
+                <a class="botao-acao botao-alterar" href="#">Alterar</a>
+                <a class="botao-acao botao-remover" href="#">Remover</a>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+{% endblock%}
