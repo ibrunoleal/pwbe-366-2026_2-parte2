@@ -43,3 +43,30 @@ def buscar_aluno_pela_matricula():
     else:
         contexto = {"aluno": aluno_data}
         return render_template("/aluno/aluno.html", context=contexto)
+
+
+def editar_aluno():
+    matricula = request.form.get("matricula")
+    aluno_data = Aluno.get_one_by_matricula(matricula=matricula)
+    if aluno_data is None:
+        erros = ["Aluno não encontrado para a matrícula: {}".format(matricula)]
+        contexto = {"erros": erros}
+        return render_template("/aluno/erros.html", context=contexto)
+    else:
+        contexto = {"aluno": aluno_data}
+        return render_template("/aluno/editar.html", context=contexto)
+
+
+def alterar_aluno():
+    data = request.form
+    aluno = Aluno(data=data)
+    aluno.validate()
+    if len(aluno.errors) == 0:
+        resultado = aluno.atualizar()
+        if resultado:
+            return redirect(url_for("aluno_listagem"))
+        else:
+            erros = ["Nenhum aluno foi atualizado. Verifique se a matrícula existe."]
+            return exibir_erros(erros=erros)
+    else:
+        return exibir_erros(erros=aluno.errors)

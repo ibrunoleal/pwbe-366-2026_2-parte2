@@ -19,7 +19,7 @@ def adicionar_rotas(app: Flask):
     )
     # listar todos os alunos
     app.add_url_rule(
-        "/aluno/alunos",
+        rule="/aluno/alunos",
         endpoint="aluno_listagem",
         view_func=aluno_controller.listar_alunos,
         methods=["GET"],
@@ -43,5 +43,17 @@ def adicionar_rotas(app: Flask):
         "/aluno/buscar",
         endpoint="aluno_buscar",
         view_func=aluno_controller.buscar_aluno_pela_matricula,
+        methods=["POST"],
+    )
+    app.add_url_rule(
+        "/aluno/alterar",
+        endpoint="aluno_alterar",
+        view_func=aluno_controller.alterar_aluno,
+        methods=["POST"]
+    )
+    app.add_url_rule(
+        rule="/aluno/editar",
+        endpoint="aluno_editar",
+        view_func=aluno_controller.editar_aluno,
         methods=["POST"],
     )

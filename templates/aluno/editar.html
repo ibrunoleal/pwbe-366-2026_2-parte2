@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} Novo Aluno {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="grid-container">
+        <div class="grid-row texto-centralizado">
+            <div class="col-12">
+                <h2>Edição do Cadastro de Aluno</h2>
+            </div>
+        </div>
+        <div class="grid-row">
+                
+            <div class="col-3"></div>
+            <div class="col-6">
+                <form action="/aluno/alterar" method="POST">
+                    <div>
+                        <label for="">Matricula:</label>
+                        <span>{{ context.aluno.matricula }}</span>
+                        <input type="hidden" name="matricula" value="{{ context.aluno.matricula }}">
+                    </div>
+                    <div>
+                        <label for="">Nome:</label>
+                        <input type="text" name="nome" id="" value="{{ context.aluno.nome }}">
+                    </div>
+                    <div>
+                        <input type="submit" value="Atualizar">
+                    </div>
+                </form>
+            </div>
+            <div class="col-3"></div>
+        </div>
+
+    </div>
+{% endblock %}

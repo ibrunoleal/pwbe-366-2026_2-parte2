@@ -29,7 +29,14 @@
                 </ul>
             </div>
             <div class="painel-acoes">
-                <a class="botao-acao botao-alterar" href="#">Alterar</a>
+                <div>
+                    <form action="/aluno/editar" method="post">
+                        <input type="hidden" name="matricula" value="{{ context.aluno.matricula }}">
+                        <input class="botao-acao botao-alterar" type="submit" value="Editar">
+                    </form>
+                </div>
+                
+                
                 <a class="botao-acao botao-remover" href="#">Remover</a>
             </div>
         </div>

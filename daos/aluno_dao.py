@@ -4,7 +4,7 @@ class AlunoDAO:
     def __init__(self):
         self.db = SQLiteDB()
 
-    def create(self, data):
+    def create(self, data: dict):
         """
         Insere um novo aluno no banco de dados.
         Retorna o número de linhas afetadas (1 se inserido com sucesso, 0 caso contrário).
@@ -61,9 +61,19 @@ class AlunoDAO:
         else: return None  # consulta não encontrou o aluno
 
     def update(self, data: dict):
-        # TODO: Implementar a atualização de um aluno no banco de dados
-        # a partir da matricula atualizar o nome do aluno
-        pass
+        # TODO : Implementar a atualização de um aluno no banco de dados
+        # a partir da matricula atualizar o nome do aluno no banco de dados
+        self.db.conectar()
+        sql = """
+                UPDATE alunos
+                SET nome_completo = ?
+                WHERE matricula = ?;
+                """
+        matricula = data.get('matricula')
+        nome = data.get('nome')
+        resultado = self.db.executar(query=sql, params=(nome, matricula))
+        self.db.desconectar()
+        return resultado  # Retorna o número de linhas afetadas (1 se inserido com sucesso, 0 caso contrário)
 
     def delete(self, matricula: str):
         # TODO: Implementar a exclusão de um aluno no banco de dados

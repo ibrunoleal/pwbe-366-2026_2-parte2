@@ -79,7 +79,7 @@ class Aluno:
     @staticmethod
     def get_one_by_matricula(matricula: str):
         """
-        Retorna um aluno do banco de dados com base na matrícula.
+        Retorna os dados de um aluno (Aluno.data) do banco de dados com base na matrícula.
         Retorna um objeto Aluno se encontrado, None caso contrário.
         """
         dao = AlunoDAO()
