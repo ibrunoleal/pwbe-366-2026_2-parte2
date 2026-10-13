@@ -13,9 +13,7 @@ def exibir_erros(erros: list):
 
 
 def salvar():
-    data = (
-        request.form
-    )  # Pega os dados do formulário enviado tanto via GET quanto via POST
+    data = request.form
     novo_aluno = Aluno(data=data)
     novo_aluno.validate()
     if len(novo_aluno.errors) == 0:

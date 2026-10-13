@@ -21,23 +21,31 @@ class Aluno:
         
         nome: deve ser uma string com no mínimo 5 e no máximo 50 caracteres.
         """
+        # validação da matrícula
         matricula = self.data.get("matricula")
         if matricula is None or not isinstance(matricula, str):
             self.errors.append("A matrícula deve ser uma string.")
-        if not matricula.strip():
-            self.errors.append(
-                "A matrícula não pode ser vazia ou conter apenas espaços."
-            )
-        if len(matricula) != 10:
-            self.errors.append("A matrícula deve ter exatamente 10 caracteres.")
+        else:
+            if not matricula.strip():
+                self.errors.append(
+                    "A matrícula não pode ser vazia ou conter apenas espaços."
+                )
+            if any(ch.isspace() for ch in matricula):
+                self.errors.append("A matrícula não pode conter espaços.")
+            if len(matricula) != 10:
+                self.errors.append("A matrícula deve ter exatamente 10 caracteres.")
 
+        # validação do nome
         nome = self.data.get("nome")
         if nome is None or not isinstance(nome, str):
             self.errors.append("O nome deve ser uma string.")
-        if not nome.strip():
-            self.errors.append("O nome não pode ser vazio.")
-        if len(nome) < 5 or len(nome) > 50:
-            self.errors.append("O nome deve ter entre 5 e 50 caracteres.")
+        else:
+            if not nome.strip():
+                self.errors.append("O nome não pode ser vazio.")
+            if "  " in nome:
+                self.errors.append("O nome não pode conter dois espaços consecutivos.")
+            if len(nome) < 5 or len(nome) > 50:
+                self.errors.append("O nome deve ter entre 5 e 50 caracteres.")
 
         if len(self.errors) == 0:
             data = {"matricula": matricula, "nome": nome}
