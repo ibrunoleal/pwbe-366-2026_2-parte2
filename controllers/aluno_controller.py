@@ -61,12 +61,34 @@ def alterar_aluno():
     data = request.form
     aluno = Aluno(data=data)
     aluno.validate()
-    if len(aluno.errors) == 0:
-        resultado = aluno.atualizar()
+    if len(aluno.errors) == 0: # verifica se os novos dados estão válidos antes de atualizar
+        # verifica se o aluno com aquela matricula existe antes de tentar atualizar
+        aluno_data = Aluno.get_one_by_matricula(matricula=aluno.data.get("matricula"))
+        if aluno_data is None:
+            erros = ["Aluno não encontrado para a matrícula: {}".format(aluno.data.get("matricula"))]
+            return exibir_erros(erros=erros)
+        else:
+            resultado = aluno.atualizar()
+            if resultado:
+                return redirect(url_for("aluno_listagem"))
+            else:
+                # se a atualização falhar no banco por algum motivo, exibe uma mensagem de erro
+                erros = ["Nenhum aluno foi atualizado. Problema ao atualizar no banco."]
+                return exibir_erros(erros=erros)
+    else:
+        return exibir_erros(erros=aluno.errors)
+
+def remover_aluno():
+    matricula = request.form.get("matricula")
+    data_aluno = Aluno.get_one_by_matricula(matricula=matricula)
+    if data_aluno is None:
+        erros = ["Aluno não encontrado para a matrícula: {}".format(matricula)]
+        return exibir_erros(erros=erros)
+    else:
+        aluno = Aluno(data=data_aluno)
+        resultado = aluno.remover()
         if resultado:
             return redirect(url_for("aluno_listagem"))
         else:
-            erros = ["Nenhum aluno foi atualizado. Verifique se a matrícula existe."]
+            erros = ["Falha ao remover o aluno com matrícula: {}".format(matricula)]
             return exibir_erros(erros=erros)
-    else:
-        return exibir_erros(erros=aluno.errors)

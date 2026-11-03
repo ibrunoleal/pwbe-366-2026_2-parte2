@@ -102,13 +102,14 @@ class Aluno:
         else:
             return False
 
+
     def remover(self):
         """
         Remove o aluno do banco de dados.
         Retorna True se o aluno foi removido com sucesso, False caso contrário.
         """
         dao = AlunoDAO()
-        resultado = dao.delete(self.data)
+        resultado = dao.delete(self.data.get("matricula"))
         if resultado == 1:
             return True
         else:

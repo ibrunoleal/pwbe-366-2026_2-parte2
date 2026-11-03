@@ -63,14 +63,13 @@ class AlunoDAO:
     def update(self, data: dict):
         # TODO : Implementar a atualização de um aluno no banco de dados
         # a partir da matricula atualizar o nome do aluno no banco de dados
-        self.db.conectar()
-        sql = """
-                UPDATE alunos
-                SET nome_completo = ?
-                WHERE matricula = ?;
-                """
+        sql = """   UPDATE alunos
+                    SET nome_completo = ?
+                    WHERE matricula = ?;"""
         matricula = data.get('matricula')
         nome = data.get('nome')
+        print(f'dao update, matricula={matricula}, nome={nome}')
+        self.db.conectar()
         resultado = self.db.executar(query=sql, params=(nome, matricula))
         self.db.desconectar()
         return resultado  # Retorna o número de linhas afetadas (1 se inserido com sucesso, 0 caso contrário)
@@ -78,4 +77,8 @@ class AlunoDAO:
     def delete(self, matricula: str):
         # TODO: Implementar a exclusão de um aluno no banco de dados
         # a partir da matricula excluir o aluno do banco de dados
-        pass
+        sql = "DELETE FROM alunos WHERE matricula = ?;"
+        self.db.conectar()
+        resultado = self.db.executar(query=sql, params=(matricula,))
+        self.db.desconectar()
+        return resultado  # Retorna o número de linhas afetadas (1 se inserido com sucesso, 0 caso contrário)

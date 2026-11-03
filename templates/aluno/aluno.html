@@ -37,7 +37,10 @@
                 </div>
                 
                 
-                <a class="botao-acao botao-remover" href="#">Remover</a>
+                <form action="/aluno/remover" method="post">
+                    <input type="hidden" name="matricula" value="{{ context.aluno.matricula }}">
+                    <input class="botao-acao botao-remover" type="submit" value="Remover">
+                </form>
             </div>
         </div>
         <div class="col-3"></div>
