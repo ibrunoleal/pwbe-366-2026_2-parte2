@@ -63,3 +63,15 @@ def adicionar_rotas(app: Flask):
         view_func=aluno_controller.remover_aluno,
         methods=["POST"],
     )
+    app.add_url_rule(
+        rule="/aluno/contato/novo",
+        endpoint="aluno_contato_novo",
+        view_func=aluno_controller.contato_novo,
+        methods=["POST"]
+    )
+    app.add_url_rule(
+        rule="/aluno/contato/salvar",
+        endpoint="aluno_contato_salvar",
+        view_func=aluno_controller.contato_salvar,
+        methods=["POST"]
+    )

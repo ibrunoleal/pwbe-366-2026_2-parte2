@@ -13,6 +13,7 @@ class SQLiteDB:
         """Abre a conexão com o banco de dados."""
         try:
             self.conn = sqlite3.connect(self.db_name)
+            self.conn.execute("PRAGMA foreign_keys = ON")
             self.conn.row_factory = sqlite3.Row
             self.cursor = self.conn.cursor()
         except sqlite3.Error as e:

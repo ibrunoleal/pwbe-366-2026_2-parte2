@@ -10,6 +10,7 @@ app = Flask(__name__)
 db = SQLiteDB()
 db.conectar() # Abre a conexão com o banco de dados
 db.executar_script_sql('database/scripts/tabela_aluno.sql') # cria a tabela de alunos
+db.executar_script_sql('database/scripts/tabela_contato.sql') # cria a tabela de contatos
 db.desconectar() # Fecha a conexão com o banco de dados
 
 

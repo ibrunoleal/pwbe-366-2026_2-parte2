@@ -20,11 +20,18 @@
                     <tr>
                         <th>matricula</th>
                         <th>nome</th>
+                        <th>Detalhes</th>
                     </tr>
                     {% for aluno in context.alunos %}
                     <tr>
                         <td>{{ aluno.matricula }}</td>
                         <td>{{ aluno.nome }}</td>
+                        <td>
+                            <form action="/aluno/buscar" method="post">
+                                <input type="hidden" name="matricula" value="{{ aluno.matricula }}">
+                                <input class="botao-acao botao-detalhes" type="submit" value="Detalhes">
+                            </form>
+                        </td>
                     </tr>
                     {% endfor %}
                 </table>

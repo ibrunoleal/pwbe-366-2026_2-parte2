@@ -52,3 +52,19 @@ th {
 .botao-detalhar:hover {
     background-color: #038f5b;
 }
+
+.botao-detalhes {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px solid #6c757d;
+    border-radius: 4px;
+    background-color: #6c757d;
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+}
+
+.botao-detalhes:hover {
+    border-color: #565e64;
+    background-color: #565e64;
+}

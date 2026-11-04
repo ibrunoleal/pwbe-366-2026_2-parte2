@@ -42,6 +42,28 @@
                     <input class="botao-acao botao-remover" type="submit" value="Remover">
                 </form>
             </div>
+
+            <div class="painel-contatos" aria-labelledby="titulo-contatos">
+                <h3 id="titulo-contatos">Contatos</h3>
+                <div class="grade-contatos">
+                    {% for contato in context.contatos %}
+                    <article class="contato-card">
+                        <h4>{{ contato.nome }}</h4>
+                        <p><span class="contato-descricao">Telefone</span>{{ contato.telefone }}</p>
+                    </article>
+                    {% else %}
+                    <p class="contatos-vazios">Nenhum contato cadastrado para este aluno.</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="painel-acoes">
+                <!-- <a class="botao-acao botao-alterar" href="{{ url_for('aluno_contato_novo') }}">Cadastrar novo contato</a> -->
+                <form action="/aluno/contato/novo" method="post">
+                    <input type="hidden" name="matricula" value="{{ context.aluno.matricula }}">
+                    <input class="botao-acao botao-alterar" type="submit" value="Cadastrar novo contato">
+                </form>
+            </div>
         </div>
         <div class="col-3"></div>
     </div>

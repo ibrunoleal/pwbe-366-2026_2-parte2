@@ -10,3 +10,4 @@ CREATE TABLE IF NOT EXISTS alunos (
     -- (Funciona para matrículas numéricas entre 1000000000 e 9999999999)
     CHECK(length(cast(matricula as text)) = 10)
 );
+
